@@ -43,6 +43,6 @@ class TripController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def trip_params
-      params.require(:trip).permit(:title, :description, :user_id, :location_id, :event_id)
+      params.require(:trip).permit(:title, :description, :date, :user_id, :location_id, :event_id)
     end
 end
