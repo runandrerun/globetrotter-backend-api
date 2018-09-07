@@ -12,16 +12,7 @@
 # Trip.create(title: "Europe!", description: "Traveled Europe!", start_date: "2014-1-1", end_date: "2014-1-1", destinations: [], all_trips: 10, user_id: 1, event_id: 1, location_id: 1)
 #
 #
-# def rakeGeoLocs
-#   all_locs = RestClient.get()
-#   wrapper = JSON.parse(all_drinks)
-# end
-
-# require 'google_places'
-#
-# @client = GooglePlaces::Client.new('AIzaSyBoAZrNZdcLmM-Ei7YtwELfS20Hb3bG_N4')
-#
-# @spots = @client.spot(-33.8670522, 151.1957362)
+# 
 require 'geolocations'
 
 def tooDeep
@@ -32,20 +23,3 @@ def tooDeep
 end
 
 puts tooDeep
-
-# require 'google-geo'
-#
-# @geo = Google::Geo.new('AIzaSyBoAZrNZdcLmM-Ei7YtwELfS20Hb3bG_N4')
-
-# def all_locs
-#   all_spots.each do |spot|
-#     @spots << spot
-#     @spots.each do |spot|
-#       spot
-#     end
-#   end
-# end
-
-# def geo_loc
-#   addresses = geo.locate ‘1600 Amphitheatre Parkway, Mountain View, CA’
-# end
