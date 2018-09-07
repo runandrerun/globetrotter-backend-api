@@ -16,19 +16,22 @@
 require 'geolocations'
 
 def tooDeep
-  sample = @geolocations.sample(100)
+  sample = @geolocations.sample(50)
   sample.map do |location|
     Location.create(city: location[:city_ascii], state: location[:admin_name], country: location[:country], lng: location[:lng], lat: location[:lat])
   end
+  if sample.length == 50
+    User.create(username:"DreDaBeast", password: '123', avatar: 'url')
+    Event.create(title: 'Day 1!', description: 'Backpacking!', images: 'url', video: 'url')
+    trip = Trip.create(title: "Adventure through Europe!", description: "Backpacked through Europe", start_date: '2-14-2018', end_date: '2-25-2018', destinations: [], all_trips: 6, user_id: 1, event_id: 1, location_id: 1)
+
+    trip[:destinations] << Location.find(1)
+    trip[:destinations] << Location.find(24)
+    trip[:destinations] << Location.find(30)
+    trip[:destinations] << Location.find(20)
+    trip[:destinations] << Location.find(10)
+    trip.save
+  end
 end
 
-User.create(username:"DreDaBeast", password: '123', avatar: 'url')
-Event.create(title: 'Day 1!', description: 'Backpacking!', images: 'url', video: 'url')
-Trip.create(title: "Adventure through Europe!", description: "Backpacked through Europe", start_date: '2-14-2018', end_date: '2-25-2018', destinations: [], all_trips: 6, user_id: 1, event_id: 1, location_id: 1)
-mainTrip = Trip.find(1)
-trip[:destinations] << Trip.find(1)
-trip[:destinations] << Trip.find(24)
-trip[:destinations] << Trip.find(30)
-trip[:destinations] << Trip.find(20)
-trip[:destinations] << Trip.find(10)
 puts tooDeep
