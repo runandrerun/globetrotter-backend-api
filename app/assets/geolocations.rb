@@ -1,4 +1,4 @@
-[
+@geolocations = [
   {
     "city": "Malishev",
     "city_ascii": "Malisheve",
