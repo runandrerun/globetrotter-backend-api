@@ -16,8 +16,8 @@
 require 'geolocations'
 
 def tooDeep
-  sample = @geolocations.sample(50)
-  sample.map do |location|
+  # sample = @geolocations.sample(50)
+  @geolocations.map do |location|
     Location.create(city: location[:city_ascii], state: location[:admin_name], country: location[:country], lng: location[:lng], lat: location[:lat])
   end
 end
