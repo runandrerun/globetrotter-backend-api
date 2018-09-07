@@ -9,4 +9,4 @@
 User.create(username: 'dre', password: '123', avatar: 'img')
 Location.create(city: "London", state: "",country: "United Kingdom", lng: -0.118092, lat: 51.509865)
 Event.create(title: 'The Shard', description: 'Saw the Shard today!', images: 'img_url', video: '' )
-Trip.create(title: "Europe!", description: "Traveled Europe!", start_date: "2014-1-1", end_date: "2014-1-1", destinations: [], all_trips: 10, user_id: 1, event_id: 1, location_id: 1)
+Trip.create(title: "Europe!", description: "Traveled Europe!", start_date: "2014-1-1", end_date: "2014-1-1", destinations: ['flushing', 'naz house', "shah's halal", "My house", "Dumbo", "WeWorK"], all_trips: 10, user_id: 1, event_id: 1, location_id: 1)
