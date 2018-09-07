@@ -1,6 +1,6 @@
-class LocationController < ApplicationController
+class LocationsController < ApplicationController
   def index
-    @locations = location.all
+    @locations = Location.all
 
     render json: @locations
   end
@@ -43,6 +43,6 @@ class LocationController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def location_params
-      params.require(:location).permit(:start, :next, :end)
+      params.require(:location).permit(:city, :country, :lng, :lat)
     end
 end

@@ -1,6 +1,6 @@
-class TripController < ApplicationController
+class TripsController < ApplicationController
   def index
-    @trips = trip.all
+    @trips = Trip.all
 
     render json: @trips
   end
@@ -43,6 +43,6 @@ class TripController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def trip_params
-      params.require(:trip).permit(:title, :description, :start_date, :end_date, :user_id, :location_id, :event_id)
+      params.require(:trip).permit(:title, :description, :all_trips, :destinations, :start_date, :end_date, :user_id, :location_id, :event_id)
     end
 end

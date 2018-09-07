@@ -25,9 +25,11 @@ ActiveRecord::Schema.define(version: 2018_09_06_144010) do
   end
 
   create_table "locations", force: :cascade do |t|
-    t.string "start"
-    t.string "next"
-    t.string "end"
+    t.float "lng"
+    t.float "lat"
+    t.string "city"
+    t.string "state"
+    t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,8 +37,10 @@ ActiveRecord::Schema.define(version: 2018_09_06_144010) do
   create_table "trips", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "start_date"
-    t.string "end_date"
+    t.date "start_date"
+    t.date "end_date"
+    t.json "destinations"
+    t.integer "all_trips"
     t.integer "user_id"
     t.integer "event_id"
     t.integer "location_id"

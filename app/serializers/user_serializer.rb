@@ -4,4 +4,5 @@ class UserSerializer < ActiveModel::Serializer
   has_many :trips, serializer: TripSerializer, include_nested_associations: true
   has_many :locations, serializer: LocationSerializer, include_nested_associations: true
   has_many :events, serializer: EventSerializer, include_nested_associations: true
+  
 end
