@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_175846) do
+ActiveRecord::Schema.define(version: 2018_09_09_001202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,11 @@ ActiveRecord::Schema.define(version: 2018_09_07_175846) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "images"
-    t.string "video"
+    t.string "start_date"
+    t.string "end_date"
+    t.string "img_url"
+    t.string "video_url"
+    t.integer "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,9 +30,17 @@ ActiveRecord::Schema.define(version: 2018_09_07_175846) do
   create_table "locations", force: :cascade do |t|
     t.float "lng"
     t.float "lat"
+    t.string "name"
     t.string "city"
     t.string "state"
     t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trip_locations", force: :cascade do |t|
+    t.integer "location_id", null: false
+    t.integer "trip_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,11 +50,7 @@ ActiveRecord::Schema.define(version: 2018_09_07_175846) do
     t.string "description"
     t.date "start_date"
     t.date "end_date"
-    t.json "destinations"
-    t.integer "all_trips"
     t.integer "user_id"
-    t.integer "event_id"
-    t.integer "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,7 +58,7 @@ ActiveRecord::Schema.define(version: 2018_09_07_175846) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
-    t.string "avatar"
+    t.string "avatar_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

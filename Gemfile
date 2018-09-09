@@ -6,6 +6,8 @@ ruby '2.3.3'
 
 gem 'bcrypt'
 
+gem 'knock' 
+
 gem 'google_places'
 
 gem 'geocode', '~> 0.2.1'

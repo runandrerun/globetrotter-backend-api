@@ -3,6 +3,7 @@ class CreateLocations < ActiveRecord::Migration[5.2]
     create_table :locations do |t|
       t.float :lng
       t.float :lat
+      t.string :name
       t.string :city
       t.string :state
       t.string :country
