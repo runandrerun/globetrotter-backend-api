@@ -7,6 +7,7 @@ class TripsController < ApplicationController
 
   # GET /trips/1
   def show
+    @trip = Trip.find(params[:id])
     render json: @trip
   end
 
@@ -43,6 +44,6 @@ class TripsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def trip_params
-      params.require(:trip).permit(:title, :description, :all_trips, :destinations, :start_date, :end_date, :user_id, :location_id, :event_id)
+      params.require(:trip).permit(:title, :description, :locations, :destinations, :start_date, :end_date)
     end
 end

@@ -14,4 +14,6 @@
 
 class LocationSerializer < ActiveModel::Serializer
   attributes :id, :name, :city, :state, :country, :lng, :lat
+  has_many :trips
+  has_many :events
 end

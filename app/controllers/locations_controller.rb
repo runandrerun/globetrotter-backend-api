@@ -12,7 +12,7 @@ class LocationsController < ApplicationController
 
   # POST /locations
   def create
-    @location = location.new(location_params)
+    @location = Location.new(location_params)
 
     if @location.save
       render json: @location, status: :created, location: @location
@@ -43,6 +43,6 @@ class LocationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def location_params
-      params.require(:location).permit(:city, :country, :lng, :lat)
+      params.require(:location).permit(:name, :state, :city, :country, :lng, :lat, :trips)
     end
 end

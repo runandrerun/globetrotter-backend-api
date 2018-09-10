@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :locations
   resources :trips
   resources :events
+  resources :trip_locations
 
 end
