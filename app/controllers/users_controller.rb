@@ -1,5 +1,12 @@
-class UsersController < ApplicationController
-  # before_action :set_user, only: [:show, :update, :destroy]
+class UsersController < ApiController
+  before_action :require_login, except: [:create, :index]
+
+
+
+  def current
+    render json: current_user.as_json(only: %i(id username))
+  end
+
 
   # GET /users
   def index
@@ -7,20 +14,24 @@ class UsersController < ApplicationController
     render json: @users
   end
 
+
+
   # GET /users/1
   def show
     @user = User.find(params[:id])
     render json: @user
   end
 
+  def profile
+    user = User.find_by_auth_token!(request.headers[:token])
+    user_trips = User.trips
+    render json: { user: { username: user.username }, trips: user_trips}
+  end
+
   # POST /users
   def create
-    @user = User.new(user_params)
-    if @user.save
-      render json: @user, status: :created, location: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
+    @user = User.create!(user_params)
+    render json: { token: @user.auth_token}
   end
 
   # PATCH/PUT /users/1

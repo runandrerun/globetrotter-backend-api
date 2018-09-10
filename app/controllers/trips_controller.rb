@@ -1,4 +1,7 @@
-class TripsController < ApplicationController
+class TripsController < ApiController
+
+before_action :require_login, except: [:index, :show]
+
   def index
     @trips = Trip.all
 
@@ -13,8 +16,8 @@ class TripsController < ApplicationController
 
   # POST /trips
   def create
-    @trip = trip.new(trip_params)
-
+    @trip = Trip.new(trip_params)
+    @trip.user = current_user
     if @trip.save
       render json: @trip, status: :created, location: @trip
     else
@@ -39,7 +42,7 @@ class TripsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_trip
-      @trip = trip.find(params[:id])
+      @trip = Trip.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
