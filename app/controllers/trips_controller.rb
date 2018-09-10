@@ -1,4 +1,7 @@
-class TripsController < ApplicationController
+class TripsController < ApiController
+
+before_action :require_login, except: [:index, :show]
+
   def index
     @trips = Trip.all
 
@@ -7,13 +10,14 @@ class TripsController < ApplicationController
 
   # GET /trips/1
   def show
+    @trip = Trip.find(params[:id])
     render json: @trip
   end
 
   # POST /trips
   def create
-    @trip = trip.new(trip_params)
-
+    @trip = Trip.new(trip_params)
+    @trip.user = current_user
     if @trip.save
       render json: @trip, status: :created, location: @trip
     else
@@ -43,6 +47,6 @@ class TripsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def trip_params
-      params.require(:trip).permit(:title, :description, :all_trips, :destinations, :start_date, :end_date, :user_id, :location_id, :event_id)
+      params.require(:trip).permit(:title, :description, :all_trips, :destinations, :start_date, :end_date, :location_id, :event_id)
     end
 end
