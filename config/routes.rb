@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :locations
   resources :trips
   resources :events
-  post "/auth", to: "auth#show"
+  resources :trip_locations
 
 end
