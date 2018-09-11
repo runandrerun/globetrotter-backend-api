@@ -11,6 +11,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/1
   def show
+
     @location = Location.find(params[:id])
     render json: @location
   end
@@ -48,6 +49,6 @@ class LocationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def location_params
-      params.require(:location).permit(:name, :state, :city, :country, :lng, :lat, :trips)
+      params.require(:location).permit(:name, :lng, :lat, :trips)
     end
 end
