@@ -1,7 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
-require 'geolocations'
+require 'usa'
 
 
 User.create(username: "beast", password: '123', avatar_url: "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/female/68.png")
@@ -18,10 +18,10 @@ TripLocation.create(location_id: 1, trip_id: 1)
 TripLocation.create(location_id: 2, trip_id: 1)
 TripLocation.create(location_id: 3, trip_id: 1)
 
-def seedGeo
-   @geolocations.map do |location|
-    Location.create(name: location[:city_ascii], city: location[:city_ascii], state: location[:admin_name], country: location[:country], lng: location[:lng], lat: location[:lat])
-  end
-end
-
-seedGeo
+# def seedGeo
+#    @usa.map do |location|
+#     Location.create(name: location[:city_ascii], city: location[:city_ascii], state: location[:admin_name], country: location[:country], lng: location[:lng], lat: location[:lat])
+#   end
+# end
+#
+# seedGeo

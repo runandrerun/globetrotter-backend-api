@@ -1,12 +1,17 @@
 class LocationsController < ApplicationController
   def index
     @locations = Location.all
-
-    render json: @locations
+    if params[:city]
+      @location = Location.find_by(city: params[:city])
+      render json: @location.id
+    else
+      render json: @locations
+    end
   end
 
   # GET /locations/1
   def show
+    @location = Location.find(params[:id])
     render json: @location
   end
 
