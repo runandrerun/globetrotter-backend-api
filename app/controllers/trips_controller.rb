@@ -1,6 +1,5 @@
-class TripsController < ApiController
+class TripsController < ApplicationController
 
-before_action :require_login, except: [:index, :show]
 
   def index
     @trips = Trip.all
