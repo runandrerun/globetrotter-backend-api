@@ -13,7 +13,7 @@
 #
 #
 #
-# require 'geolocations'
+require 'geolocations'
 #
 # def tooDeep
 #   sample = @geolocations.sample(50)
@@ -49,3 +49,9 @@ Location.create(lat: 40.707181, lng: -74.003916, name: "Colosseum", city: "city"
 TripLocation.create(location_id: 1, trip_id: 1)
 TripLocation.create(location_id: 2, trip_id: 1)
 TripLocation.create(location_id: 3, trip_id: 1)
+
+def seedGeo
+  @geolocations.map do |location|
+    Location.create(name: location[:city_ascii], city: location[:city_ascii], state: location[:admin_name], country: location[:country], lng: location[:lng], lat: location[:lat])
+  end
+end
