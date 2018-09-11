@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :trips
   resources :events
   resources :trip_locations
+  post '/login', to: "auth#login" 
 
 end
