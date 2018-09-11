@@ -10,9 +10,9 @@ Trip.create(title: "Euro Trip 2019", description: "My trip around Europe", start
 
 Event.create(title: "Exploring Europe", description: "walked around Europe", start_date: Time.at(rand * Time.now.to_i), end_date: Time.at(rand * Time.now.to_i), img_url: "", video_url: "", location_id: 1)
 
-Location.create(lat: 40.710662, lng: -74.008980, name: "Eiffel Tower", city: "city", state: "state", country: "France")
-Location.create(lat: 40.701074, lng: -73.987064, name: "Berlin Wall", city: "city", state: "state", country: "Germany")
-Location.create(lat: 40.707181, lng: -74.003916, name: "Colosseum", city: "city", state: "state", country: "Italy")
+Location.create(lat: 40.710662, lng: -74.008980, name: "Eiffel Tower")
+Location.create(lat: 40.701074, lng: -73.987064, name: "Berlin Wall")
+Location.create(lat: 40.707181, lng: -74.003916, name: "Colosseum")
 
 TripLocation.create(location_id: 1, trip_id: 1)
 TripLocation.create(location_id: 2, trip_id: 1)
