@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def create
-    byebug
+    # byebug
     @user = User.create(user_params)
     if @user.valid?
       render json: @user, status: :created
