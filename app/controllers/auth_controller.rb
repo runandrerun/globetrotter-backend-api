@@ -1,14 +1,19 @@
 class AuthController < ApplicationController
+  skip_before_action :authorized, only: [:login]
 
   def login
   @user = User.find_by(username: auth_params['username'])
   if @user && @user.authenticate(auth_params['password'])
-    render json: @user, status: :created
+    token = encode_token({user_id: @user.id})
+    render json: { user: @user, jwt: token} , status: :created
   else
     render json: {message: 'Invalid Login'}, status: :unauthorized
   end
   end
 
+  def reauth
+    render json: @user, status: :accepted
+  end
 
   private
 

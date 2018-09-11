@@ -2,9 +2,9 @@ class TripsController < ApplicationController
 
 
   def index
-    @trips = Trip.all
+   Trip.all
 
-    render json: @trips
+    render json: Trip.includes(:locations), include: ['locations']
   end
 
   # GET /trips/1

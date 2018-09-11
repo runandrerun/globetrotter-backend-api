@@ -5,6 +5,8 @@ ruby '2.3.3'
 
 gem 'annotate'
 
+gem 'jwt'
+
 gem 'foreman'
 
 gem 'bcrypt'

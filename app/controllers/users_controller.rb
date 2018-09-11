@@ -1,13 +1,21 @@
 class UsersController < ApplicationController
+  skip_before_action :authorized, only: [:create, :show]
 
   def create
-    byebug
+
     @user = User.create(user_params)
     if @user.valid?
-      render json: @user, status: :created
+      token = encode_token({user_id: @user.id})
+      render json: {user: @user, jwt: token}, status: :created
     else
       render json: { message: 'Invalid Username or Password' }, status: :bad_request
     end
+  end
+
+
+  def show
+    @user = User.find(params[:id])
+    render json: @user
   end
 
 
