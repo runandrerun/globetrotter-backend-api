@@ -17,11 +17,8 @@
 #
 
 class TripSerializer < ActiveModel::Serializer
-<<<<<<< HEAD
-  attributes :id, :title, :description, :start_date, :end_date, :user_id
-=======
+
   attributes :id, :title, :description, :start_date, :end_date, :user_id, :locations
 
->>>>>>> d300ecf8065a347c2531f2c99dafc690621bc7e9
   has_many :locations
 end
