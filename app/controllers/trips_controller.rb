@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+  before_action :set_trip, only: [:show, :destroy, :update]
 
 
   def index
@@ -9,7 +10,6 @@ class TripsController < ApplicationController
 
   # GET /trips/1
   def show
-    @trip = Trip.find(params[:id])
     render json: @trip
   end
 
