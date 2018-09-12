@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   skip_before_action :authorized, only: [:create, :show]
 
-  def create
 
+  def create
     @user = User.create(user_params)
     if @user.valid?
       token = encode_token({user_id: @user.id})
@@ -12,15 +12,10 @@ class UsersController < ApplicationController
     end
   end
 
-
   def show
     @user = User.find(params[:id])
     render json: @user
   end
-
-
-
-
 
   private
   def user_params
