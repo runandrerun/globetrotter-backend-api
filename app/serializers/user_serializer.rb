@@ -8,10 +8,10 @@
 #  avatar          :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#
+#9
 
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :avatar_url
-  has_many :trips
-  # has_many :locations
+  attributes :id, :username, :avatar_url, :ctrips
+  # has_many :trips
+
 end
