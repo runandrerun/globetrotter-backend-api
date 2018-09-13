@@ -11,7 +11,7 @@
 #9
 
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :avatar_url, :ctrips
-  # has_many :trips
-
+  attributes :id, :username, :avatar_url, :trips
+  has_many :trips
+  has_many :locations, through: :trips
 end
